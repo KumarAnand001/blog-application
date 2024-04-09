@@ -126,11 +126,11 @@ To access protected endpoints, include the obtained access token in the `Authori
   }
   ```
   
-Create Post:
--Method: POST
--URL: /api/blog/post/
--Description: Create a new post.
--Request Body:
+### Create Post:
+-**Method:** POST
+-**URL:** /api/blog/post/
+-**Description:** Create a new post.
+-**Request Body:**
    ```json
    {
        "title": "High time to set up India’s AI regulator AIDAI",
@@ -138,7 +138,7 @@ Create Post:
        "author": 1
    }
    ```
--Response (201 Created):
+-**Response (201 Created):**
    ```json
    {
        "data": {
