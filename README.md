@@ -100,49 +100,55 @@ To access protected endpoints, include the obtained access token in the `Authori
 
 #### List Posts:
 
--GET /api/blog/list-post/
+- **Method:** `GET`
+- **URL:** `/api/blog/list-post/`
+- **Description:** Retrieve a list of all posts.
+- **Response (200 OK):**
+  ```json
+  {
+      "data": [
+          {
+              "id": 9,
+              "title": "Dialogue",
+              "body": "In addition to the frequency of updates, the thing that distinguishes most blogs from ordinary Web pages is the inclusion of forums for readers to post comments to which the blogger might respond.",
+              "likes": 0,
+              "author": 1
+          },
+          {
+              "id": 10,
+              "title": "Political blogs",
+              "body": "The U.S. presidential election of 2004 brought blogs to a newfound prominence as bloggers for both parties used the Internet as another arena of debate and conversation—as well as fund-raising. Democratic presidential primary candidate Howard Dean was the most prominent user of the Internet and the blogosphere.",
+              "likes": 0,
+              "author": 1
+          }
+      ],
+      "message": "post fetch successfully"
+  }
+  ```
+  
+Create Post:
+-Method: POST
+-URL: /api/blog/post/
+-Description: Create a new post.
+-Request Body:
+   ```json
+   {
+       "title": "High time to set up India’s AI regulator AIDAI",
+       "body": "The Artificial Intelligence and Data Authority of India (AIDAI) will ensure speedy and equitable development of this sector. The urgency for the speedy development of an artificial intelligence (AI) regulatory framework is growing day",
+       "author": 1
+   }
+   ```
+-Response (201 Created):
+   ```json
+   {
+       "data": {
+           "id": 11,
+           "title": "High time to set up India’s AI regulator AIDAI",
+           "body": "The Artificial Intelligence and Data Authority of India (AIDAI) will ensure speedy and equitable development of this sector. The urgency for the speedy development of an artificial intelligence (AI) regulatory framework is growing day",
+           "likes": 0,
+           "author": 1
+       },
+       "message": "blog created successfully"
+   }
+   ```
 
-**Response (200 OK):**
-```json
-{
-    "data": [
-        {
-            "id": 9,
-            "title": "Dialogue",
-            "body": "In addition to the frequency of updates, the thing that distinguishes most blogs from ordinary Web pages is the inclusion of forums for readers to post comments to which the blogger might respond.",
-            "likes": 0,
-            "author": 1
-        },
-        {
-            "id": 10,
-            "title": "Political blogs",
-            "body": "The U.S. presidential election of 2004 brought blogs to a newfound prominence as bloggers for both parties used the Internet as another arena of debate and conversation—as well as fund-raising. Democratic presidential primary candidate Howard Dean was the most prominent user of the Internet and the blogosphere.",
-            "likes": 0,
-            "author": 1
-        }
-    ],
-    "message": "post fetch successfully"
-}
-
-#### Create Post:
-
--POST /api/blog/post/
-
-**Request Body**
-{
-    "title" :"High time to set up India’s AI regulator AIDAI",
-    "body" :"The Artificial Intelligence and Data Authority of India (AIDAI) will ensure speedy and equitable development of this sector. The urgency for the speedy development of an artificial intelligence (AI) regulatory framework is growing day",
-    "author" : 1
-}
-
-**Response (201 Created):**
-{
-    "data": {
-        "id": 11,
-        "title": "High time to set up India’s AI regulator AIDAI",
-        "body": "The Artificial Intelligence and Data Authority of India (AIDAI) will ensure speedy and equitable development of this sector. The urgency for the speedy development of an artificial intelligence (AI) regulatory framework is growing day",
-        "likes": 0,
-        "author": 1
-    },
-    "messege": "blog created successfully"
-}
