@@ -11,6 +11,9 @@ This is a simple blog application built using Django and Django REST Framework.
 -cd blog_app
 
 3. Install dependencies:
+-pip install djangorestframework
+-pip install djangorestframework-simplejwt
+
    
 4. Apply migrations:    
 -py manage.py makemigrations
@@ -18,6 +21,7 @@ This is a simple blog application built using Django and Django REST Framework.
    
 5. Create a superuser (for accessing the Django admin panel):
 -python manage.py createsuperuser
+
 6. Run the development server:
 -python manage.py runserver
 
@@ -37,9 +41,60 @@ This is a simple blog application built using Django and Django REST Framework.
 - **Like Post:** `POST /api/blog/like/`
 - **Like Count:** `GET /api/blog/likes/`
 
-## Authentication:
+## Authentication
 
-Token-based authentication is required to access certain endpoints. Obtain a token by sending a POST request to `api-token-auth/` with valid credentials.
+This application uses token-based authentication to secure certain endpoints. Users need to register or log in to obtain an access token, which they can then use to access protected endpoints.
+
+### Endpoints:
+
+- **User Registration:**
+  - **URL:** `/api/account/register/`
+  - **Method:** `POST`
+  - **Description:** Register a new user.
+  - **Request Body Example:**
+    ```json
+    {
+        "first_name": "Anand",
+       "last_name": "Kumar",
+       "username": "ansh123",
+       "password": "Adfd565#"
+    }
+    ```
+  - **Response Example:**
+    ```json
+    {
+        "message": "Your account has been created"
+    }
+    ```
+
+- **User Login:**
+  - **URL:** `/api/account/login/`
+  - **Method:** `POST`
+  - **Description:** Log in a user and obtain a token for authentication.
+  - **Request Body Example:**
+    ```json
+    {
+       "username": "ansh123",
+       "password": "Adfd565#"
+    }
+    ```
+  - **Response Example:**
+    ```json
+   {
+       "messege": "login successful",
+       "data": {
+           "token": {
+               "refresh": "eyJhbGciOiJIUzcCI6IkpXVCJ9.eyJ0b2tlbl90eXBlI5MTgxLCJqdGkiOiIxZWY4ODI0ODk4NGINyIsInVzZXJfaWQiOjl9.N0fBT0ZHVL4mODQ_LYQrFm9zYDvPDqfeaRjDfrIbdbs",
+               "access": "eyJhbGciOiJIUzIR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXByNjg5NDgxLCJpYXQiOjE3MTI2ODjAyZWFmZDg5MzFiMjQ3NmYIiwidXNlcl9pZCI6OX0.JeX6QVAXXf3OeRJ3UWF5asApRTB_6-39sV6mG1mCoGU"
+           }
+       }
+   }
+    ```
+
+### Authentication Process:
+
+To access protected endpoints, include the obtained access token in the `Authorization` header of your requests. Tokens have an expiration time, so if your token expires, obtain a new one using the refresh token provided during registration or login.
+
 
 ### API Endpoints with example:
 
