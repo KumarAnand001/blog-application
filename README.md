@@ -98,8 +98,6 @@ To access protected endpoints, include the obtained access token in the `Authori
 
 ### API Endpoints with example:
 
-**Request:**
-
 #### List Posts:
 
 -GET /api/blog/list-post/
