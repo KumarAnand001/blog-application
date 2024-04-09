@@ -125,6 +125,7 @@ To access protected endpoints, include the obtained access token in the `Authori
 }
 
 #### Create Post:
+
 -POST /api/blog/post/
 
 **Request Body**
@@ -134,7 +135,7 @@ To access protected endpoints, include the obtained access token in the `Authori
     "author" : 1
 }
 
-**Response Body**
+**Response (201 Created):**
 {
     "data": {
         "id": 11,
