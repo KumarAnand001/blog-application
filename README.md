@@ -54,7 +54,7 @@ This application uses token-based authentication to secure certain endpoints. Us
   - **Request Body Example:**
     ```json
     {
-        "first_name": "Anand",
+       "first_name": "Anand",
        "last_name": "Kumar",
        "username": "ansh123",
        "password": "Adfd565#"
